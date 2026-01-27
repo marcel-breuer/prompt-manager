@@ -1,6 +1,4 @@
-'use client'
-
-import { useState, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 import { Prompt } from '../types/prompt'
 import { motion } from 'framer-motion'
 
@@ -10,17 +8,13 @@ interface PromptsProps {
 
 export default function Prompts({ prompts }: PromptsProps) {
   const [filteredPrompts, setFilteredPrompts] = useState<Prompt[]>(prompts)
-  const [categories, setCategories] = useState<string[]>([])
+  const categories = useMemo(() => {
+    return ['Alle', ...new Set(prompts.map((prompt) => prompt.category))]
+  }, [prompts])
   const [selectedCategory, setSelectedCategory] = useState<string>('Alle')
   const [copyMessage, setCopyMessage] = useState<string | null>(null)
 
-  useEffect(() => {
-    const uniqueCategories = [
-      'Alle',
-      ...new Set(prompts.map((prompt) => prompt.category)),
-    ]
-    setCategories(uniqueCategories)
-  }, [prompts])
+  // Removed useEffect that was causing the linting error
 
   const filterByCategory = (category: string) => {
     setSelectedCategory(category)
@@ -42,9 +36,10 @@ export default function Prompts({ prompts }: PromptsProps) {
     <div className="relative mx-auto p-6 max-w-4xl">
       <h1 className="mb-6 font-bold text-3xl text-center">Prompt Manager</h1>
 
-      <p className="mx-auto mb-6 max-w-2xl text-gray-600 text-center">
+      <p className="mx-auto mb-6 max-2xl text-gray-600 text-center">
         Der Prompt Manager bietet eine kuratierte Sammlung von{' '}
-        <b>ChatGPT-Prompts</b>, die in Kategorien unterteilt sind. Nutzer können
+        <b>ChatGPT-Prompts</b>, die in Kategorien unterteilt sind, sowie
+        optimierte Prompts für verschiedene Anwendungsfälle. Nutzer können
         Prompts durchsuchen, direkt mit einem spezialisierten GPT testen oder
         den Prompt für eigene Zwecke in die Zwischenablage kopieren. Ideal für
         effiziente AI-Workflows und kreative Inspiration!
