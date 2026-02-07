@@ -28,6 +28,7 @@ jobs:
         npm update
 
     - name: Create Pull Request
+      id: cpr
       uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -37,3 +38,17 @@ jobs:
           This PR updates the project dependencies.
         branch: 'update-dependencies'
         delete-branch: true
+
+    - name: Auto Approve Pull Request
+      if: steps.cpr.outputs.pull-request-number != ''
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          github.rest.pulls.createReview({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: ${{ steps.cpr.outputs.pull-request-number }},
+            event: 'APPROVE',
+            body: 'Approved for automatic dependency update.'
+          });
