@@ -38,17 +38,3 @@ jobs:
           This PR updates the project dependencies.
         branch: 'update-dependencies'
         delete-branch: true
-
-    - name: Auto Approve Pull Request
-      if: steps.cpr.outputs.pull-request-number != ''
-      uses: actions/github-script@v6
-      with:
-        github-token: ${{ secrets.APPROVER_TOKEN }}
-        script: |
-          github.rest.pulls.createReview({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            pull_number: ${{ steps.cpr.outputs.pull-request-number }},
-            event: 'APPROVE',
-            body: 'Approved for automatic dependency update.'
-          });
