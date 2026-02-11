@@ -2,17 +2,12 @@ const { Pool } = require('pg');
 const fs = require('fs');
 const path = require('path');
 
-// Conditionally load dotenv for local development
-if (!process.env.POSTGRES_URL) {
-  require('dotenv').config({ path: path.resolve(__dirname, '../.env.local') });
-}
-
-if (!process.env.POSTGRES_URL) {
-  throw new Error('POSTGRES_URL is not defined. Please ensure it is set in your environment or in a .env.local file.');
-}
-
 const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL,
+  host: process.env.POSTGRES_HOST,
+  port: Number(process.env.POSTGRES_PORT),
+  database: process.env.POSTGRES_DATABASE,
+  user: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
 });
 
 const migrate = async () => {
@@ -33,7 +28,7 @@ const migrate = async () => {
     `);
 
     // Read and insert data
-    const data = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../public/json/prompts.json'), 'utf8'));
+    const data = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), './public/json/prompts.json'), 'utf8'));
 
     for (const prompt of data) {
       await client.query(
