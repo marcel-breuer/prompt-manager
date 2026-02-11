@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useMemo } from 'react'
 import { Prompt } from '../types/prompt'
 import { motion } from 'framer-motion'
@@ -13,8 +15,6 @@ export default function Prompts({ prompts }: PromptsProps) {
   }, [prompts])
   const [selectedCategory, setSelectedCategory] = useState<string>('Alle')
   const [copyMessage, setCopyMessage] = useState<string | null>(null)
-
-  // Removed useEffect that was causing the linting error
 
   const filterByCategory = (category: string) => {
     setSelectedCategory(category)
