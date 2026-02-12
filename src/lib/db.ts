@@ -1,11 +1,11 @@
 import { Pool } from 'pg'
 
-const connectionString =
-  process.env.POSTGRES_URL ||
-  'postgres://user:password@host:port/database_fallback'
-
 const pool = new Pool({
-  connectionString: connectionString,
+  host: process.env.POSTGRES_HOST,
+  port: process.env.POSTGRES_PORT ? parseInt(process.env.POSTGRES_PORT) : 5432,
+  database: process.env.POSTGRES_DATABASE,
+  user: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
 })
 
 export const db = pool
