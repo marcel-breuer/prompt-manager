@@ -12,7 +12,7 @@ Nutzer können Prompts in einer übersichtlichen UI durchsuchen, kategorisieren 
 ## 📦 Installation
 1. Projekt klonen
     ```bash
-    git clone https://github.com/breuermarcel/prompt-manager.git
+    git clone https://github.com/m-breuer/prompt-manager.git
     cd prompt-manager
     ```
 
