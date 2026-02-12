@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: promptmanager-prod
+    container_name: promptmanager-prod
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
