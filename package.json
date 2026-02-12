@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next eslint",
     "prettier": "npx prettier 'src/**/*.{js,ts,tsx,mjs,cjs,json}' --write",
-    "postbuild": "next-sitemap",
-    "migrate": "node ./scripts/migrate.js"
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@types/pg": "^8.16.0",
