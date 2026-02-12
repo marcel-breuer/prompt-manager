@@ -13,6 +13,7 @@ async function getPrompts(): Promise<Prompt[]> {
 }
 
 export default async function Home() {
+  return 'Hello, World!'; 
   const prompts = await getPrompts()
   return <Prompts prompts={prompts} />
 }
