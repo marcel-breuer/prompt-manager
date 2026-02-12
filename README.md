@@ -21,12 +21,13 @@ Nutzer können Prompts in einer übersichtlichen UI durchsuchen, kategorisieren 
     npm install
     ```
 
-3.  Umgebungsvariablen einrichten
-    Erstelle eine `.env.local` Datei im Hauptverzeichnis des Projekts und füge die Verbindungszeichenfolge für deine PostgreSQL-Datenbank hinzu. Eine `.env.example`-Datei ist als Vorlage vorhanden.
+3.  Docker und Umgebungsvariablen einrichten
+    Dieses Projekt verwendet Docker für die Bereitstellung der Anwendung und der PostgreSQL-Datenbank (Version 17).
+    Erstelle eine `.env` Datei im Hauptverzeichnis des Projekts, indem du die `.env.example`-Datei als Vorlage verwendest.
     ```bash
-    cp .env.example .env.local
+    cp .env.example .env
     ```
-    Bearbeite die `.env.local`-Datei mit deinen Datenbankdaten.
+    Bearbeite die `.env`-Datei mit deinen Datenbankdaten. Setze `POSTGRES_HOST` auf `postgres` für die Docker-Umgebung.
 
 4.  Datenbankmigration
     Führe das Migrationsskript aus, um die `prompts`-Tabelle in deiner Datenbank zu erstellen und die anfänglichen Daten zu laden.
@@ -34,8 +35,10 @@ Nutzer können Prompts in einer übersichtlichen UI durchsuchen, kategorisieren 
     npm run migrate
     ```
 
-5.	Entwicklungsserver starten
+5.	Entwicklungsserver und Datenbank starten
+    Für die lokale Entwicklung, starte die Dienste mit dem `start-dev.sh` Skript:
     ```bash
-    npm run dev
+    sh start-dev.sh
     ```
+    Für die Produktion kannst du das `start-prod.sh` Skript verwenden.
     Danach ist die App unter http://localhost:3000 erreichbar.
