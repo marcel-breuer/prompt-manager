@@ -9,7 +9,7 @@
     "start": "next start",
     "prettier": "npx prettier 'src/**/*.{js,ts,tsx,mjs,cjs,json}' --write",
     "postbuild": "next-sitemap --config ./next-sitemap.config.cjs",
-    "migrate": "node scripts/migrate.cjs"
+    "migrate": "node src/scripts/migrate.cjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
