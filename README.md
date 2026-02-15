@@ -29,13 +29,7 @@ Nutzer können Prompts in einer übersichtlichen UI durchsuchen, kategorisieren 
     ```
     Bearbeite die `.env`-Datei mit deinen Datenbankdaten. Setze `POSTGRES_HOST` auf `postgres` für die Docker-Umgebung.
 
-4.  Datenbankmigration
-    Führe das Migrationsskript aus, um die `prompts`-Tabelle in deiner Datenbank zu erstellen und die anfänglichen Daten zu laden.
-    ```bash
-    npm run migrate
-    ```
-
-5.	Entwicklungsserver und Datenbank starten
+4.	Entwicklungsserver und Datenbank starten
     Für die lokale Entwicklung, starte die Dienste mit dem `start-dev.sh` Skript:
     ```bash
     sh start-dev.sh
