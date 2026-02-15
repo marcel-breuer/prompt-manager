@@ -2,6 +2,7 @@
 module.exports = {
     siteUrl: 'https://prompt-manager.m-breuer.dev',
     generateRobotsTxt: true,
+    serverModuleFormat: 'cjs',
     robotsTxtOptions: {
         policies: [
             {
