@@ -3,6 +3,8 @@ FROM node:25-alpine AS base
 # Install dependencies only when needed
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
+RUN corepack enable
+RUN corepack prepare npm@latest --activate
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
