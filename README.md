@@ -34,6 +34,6 @@ Nutzer können Prompts in einer übersichtlichen UI durchsuchen, kategorisieren 
     ```bash
     sh start-dev.sh
     ```
-    Das Skript startet die Container, führt anschließend `bun install` im `app`-Container aus und versucht danach automatisch, die IDE via Dev Container mit dem `app`-Container zu verbinden (wenn `devcontainer` oder `code` verfügbar ist).
+    Das Skript startet die Container, führt anschließend `bun install` im `app`-Container aus und öffnet danach direkt eine Shell im `app`-Container (`bash`, mit `sh`-Fallback).
     Für die Produktion kannst du das `start-prod.sh` Skript verwenden.
     Danach ist die App unter http://localhost:3000 erreichbar.
