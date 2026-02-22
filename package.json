@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "packageManager": "bun@1.3.9",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "prettier": "npx prettier 'src/**/*.{js,ts,tsx,mjs,cjs,json}' --write",
+    "prettier": "bunx prettier 'src/**/*.{js,ts,tsx,mjs,cjs,json}' --write",
     "postbuild": "next-sitemap --config ./next-sitemap.config.cjs"
   },
   "dependencies": {

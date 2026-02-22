@@ -18,7 +18,7 @@ Nutzer können Prompts in einer übersichtlichen UI durchsuchen, kategorisieren 
 
 2.	Abhängigkeiten installieren
     ```bash
-    npm install
+    bun install
     ```
 
 3.  Docker und Umgebungsvariablen einrichten
