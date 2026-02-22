@@ -2,6 +2,7 @@
 set -euo pipefail
 
 docker compose -f docker-compose.yml -f docker-compose.override.yml up --build -d
+docker compose -f docker-compose.yml -f docker-compose.override.yml exec -T app bun install
 
 if command -v devcontainer >/dev/null 2>&1; then
   devcontainer open .
