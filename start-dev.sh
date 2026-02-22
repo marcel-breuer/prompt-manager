@@ -1,10 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-docker compose -f docker-compose.yml -f docker-compose.override.yml up --build -d
-docker compose -f docker-compose.yml -f docker-compose.override.yml exec -T app bun install
-if docker compose -f docker-compose.yml -f docker-compose.override.yml exec -T app bash -lc "exit" >/dev/null 2>&1; then
-  docker compose -f docker-compose.yml -f docker-compose.override.yml exec app bash
-else
-  docker compose -f docker-compose.yml -f docker-compose.override.yml exec app sh
-fi
+compose_files=(-f docker-compose.yml -f docker-compose.override.yml)
+
+docker compose "${compose_files[@]}" up --build -d postgres
+docker compose "${compose_files[@]}" run --rm --service-ports app sh -lc "mkdir -p .next && find .next -mindepth 1 -maxdepth 1 -exec rm -rf {} + && bun install && bun dev"
