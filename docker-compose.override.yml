@@ -17,7 +17,3 @@ services:
       - /app/.next
     command: bun run dev
     restart: "no"
-
-  promptmanager-db:
-    expose:
-      - "5432"
