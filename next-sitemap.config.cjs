@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: 'https://prompt-manager.m-breuer.dev',
+    siteUrl: 'https://prompt-manager.marcel-breuer.dev',
     generateRobotsTxt: true,
     serverModuleFormat: 'cjs',
     robotsTxtOptions: {

@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "prettier": "bunx prettier 'src/**/*.{js,ts,tsx,mjs,cjs,json}' --write",
-    "postbuild": "next-sitemap --config ./next-sitemap.config.cjs"
+    "postbuild": "next-sitemap --config ./next-sitemap.config.cjs",
+    "test": "node tests/check-domain-references.mjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.0",
